@@ -1,0 +1,42 @@
+body {
+    background-color: red;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    background-color: wheat;
+    margin-bottom: 10px;
+    padding: 1.5rem 5rem;
+    border-radius: 15px;
+}
+
+#mainContainer {
+    background-color: aqua;
+    text-align: center;
+    padding: 4rem;
+
+}
+
+#opinionTextArea {
+    text-align: center;
+    resize: vertical;
+    width: 20%;
+    height: 30%;
+    margin-bottom: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
