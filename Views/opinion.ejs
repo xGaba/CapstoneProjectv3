@@ -1,10 +1,23 @@
 <%- include('partials/header.ejs') %>
 
-<main>
-    <ul id="opinion"></ul>
-    <form>
-        <textarea id="opinionTextArea" placeholder="Insert your opinion here" maxlength="500"></textarea>
-        <input type="submit">
+<main id="opinonMain">
+    
+    <form id="opinionForm" action="/opinion" method="post">
+
+        <div>Insert your opinon below:</div>
+        <div><textarea id="opinionTextArea" name="opinionTextArea" placeholder="Insert your opinion here" maxlength="500" required ></textarea></div>
+        <div></div><button id="buttons" type="submit">Submit</button></div>
+
+        <ul id="opinion"> User's opinions will be listed here
+        <% if (opinions.length > 0) { %>
+            <% opinions.forEach((opinion, index) => { %>
+                <li><strong>Opinion <%= index + 1 %>:</strong> <%= opinion %></li>
+            <% }) %>
+        <% } else { %>
+            <li>No opinions submitted yet.</li>
+        <% } %>
+        </ul>
+
     </form>
     
 </main>

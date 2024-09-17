@@ -2,6 +2,25 @@ body {
     background-color: red;
 }
 
+#opinion {
+    background-color: brown;
+    border-radius: 25px;
+    list-style-type: none;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+li {
+    margin: 1rem 0;
+    width: 80%;
+    text-align: center;
+    background-color: rgb(250, 175, 121);
+    border-radius: 15px;
+}
+
 main {
     position: absolute;
     top: 0;
@@ -29,32 +48,21 @@ main {
     border-radius: 25px;
 }
 
-#opinionTextArea {
-    text-align: center;
-    resize: vertical;
-    width: 20%;
-    height: 30%;
-    margin-bottom: 20px;
-}
-
 footer {
     position: absolute;
     bottom: 0;
 }
 
-#contactForm {
+#contactForm, #opinionForm {
     display: grid;
+    background-color: wheat;
+    position: absolute;
+    width: 80%;
+    padding: 30px 0;
+    border-radius: 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
-}
-
-#contactForm {
-    background-color: wheat;
-    position: absolute;
-    width: 60%;
-    padding: 30px 0;
-    border-radius: 20px;
 }
 
 #emailContent {
@@ -62,6 +70,14 @@ footer {
     width: 100%;
     min-height: 200px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#opinionTextArea {
+    resize: vertical;
+    width: 100%;
+    min-height: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 30rem;
 }
 
 #email, #subject {
@@ -74,4 +90,9 @@ form > div > input, form > div > textarea{
     border: none;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#buttons {
+    width: 30%;
+    margin: 0 auto;
 }
