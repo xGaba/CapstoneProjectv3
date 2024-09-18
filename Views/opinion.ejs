@@ -11,7 +11,7 @@
         <ul id="opinion"> User's opinions will be listed here
         <% if (opinions.length > 0) { %>
             <% opinions.forEach((opinion, index) => { %>
-                <li>
+                <li id="opinion-item-<%= opinion.id %>">
                     <div class="opinion-text" id="opinion-text-<%= opinion.id %>">
                         <strong>Opinion <%= index + 1 %>:</strong> <%= opinion.opinionTextArea %>
                     </div>
@@ -40,7 +40,6 @@ function editOpinion(id, text){
 function deleteOpinion(id){
     console.log('desde delete')
 }
-
 </script>
 
 <%- include('partials/footer.ejs') %>
