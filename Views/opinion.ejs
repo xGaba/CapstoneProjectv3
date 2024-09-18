@@ -11,15 +11,36 @@
         <ul id="opinion"> User's opinions will be listed here
         <% if (opinions.length > 0) { %>
             <% opinions.forEach((opinion, index) => { %>
-                <li><strong>Opinion <%= index + 1 %>:</strong> <%= opinion %></li>
+                <li>
+                    <div class="opinion-text" id="opinion-text-<%= opinion.id %>">
+                        <strong>Opinion <%= index + 1 %>:</strong> <%= opinion.opinionTextArea %>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn editBtn" onclick="editOpinion(<%= opinion.id %>, '<%= opinion.opinionTextArea %>')">Edit</button> 
+                        <button class="btn deleteBtn" onclick="deleteOpinion(<%= opinion.id %>)">X</button>
+                    </div>
+                </li>
             <% }) %>
         <% } else { %>
             <li>No opinions submitted yet.</li>
         <% } %>
         </ul>
 
+        
     </form>
     
 </main>
+
+<script>
+
+function editOpinion(id, text){
+    console.log (id, text)
+}
+
+function deleteOpinion(id){
+    console.log('desde delete')
+}
+
+</script>
 
 <%- include('partials/footer.ejs') %>

@@ -1,12 +1,72 @@
 <%- include('partials/header.ejs') %>
 
 <main>
+    
     <form id="contactForm" action="/contact" method="POST">
-        <div>Email: <input id="email" type="email" name="email" placeholder="Insert your email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"></div>
+        <div>Email: <input id="email" type="email" name="email" placeholder="Insert your email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"></div>
         <div>Subject: <input id="subject" type="text" name="subject" placeholder="Subject"></div>
         <div>Content: <textarea id="emailContent" name="emailContent" placeholder="Your message"></textarea></div>
         <div></div><button id="buttons" type="submit">Submit</button></div>
+
+        <!-- DIV for show the error Message -->
+        <div id="errorMessage"></div>
+
+        <!-- Div for show the success Message -->
+        <div id="successMessage"></div>
     </form>
+    
 </main>
 
 <%- include('partials/footer.ejs') %>
+
+<script>
+
+    //Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error'); //Get the 'error' parameter
+    const success = urlParams.get('success') //Get the 'success' parameter
+
+    //Show the error message
+    if (error) {
+        const errorMessageDiv = document.getElementById('errorMessage');
+        let message = '';
+
+        switch (error) {
+            case 'invalidEmail':
+                message = 'The email format is incorrect';
+                break;
+
+            case 'emptySubject':
+                message = 'The subject field is empty';
+                break;
+
+            case 'emptyContent':
+                message = 'The content field is empty';
+                break;
+
+            default:
+                message = 'There was an error submitting the form';
+        };
+
+        errorMessageDiv.textContent = message
+        errorMessageDiv.classList.add ('errorAlert');
+
+        setTimeout(() => {
+            errorMessageDiv.remove()
+        }, 3000);
+    };
+
+    //Show the success message
+    if (success) {
+        const successMessageDiv = document.getElementById('successMessage');
+        successMessageDiv.textContent = 'The form was submitted correctly';
+        successMessageDiv.classList.add ('successAlert');
+
+        setTimeout(() => {
+            successMessageDiv.remove();
+        }, 3000);
+    }
+
+    
+
+</script>

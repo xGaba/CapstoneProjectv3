@@ -22,11 +22,9 @@ app.get('/opinion', (req, res)=>{
 });
 
 app.get('/contact', (req, res)=>{
-    res.render('contact.ejs')
-});
-
-app.listen(port, ()=>{
-    console.log(`Listening on port ${port}.`)
+    const error = req.query.error;
+    const success = req.query.success;
+    res.render('contact.ejs', {error, success});
 });
 
 app.post('/contact', (req, res)=>{
@@ -35,25 +33,18 @@ app.post('/contact', (req, res)=>{
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if(!emailRegex.test(email)){
-        return res.status(400).json({error: 'Incorrect email format'})
+        return res.redirect('/contact?error=invalidEmail')
     };
 
     if(!subject || subject.trim() === ''){
-        return res.status(400).json({error: 'Subject cannot be empty'})
+        return res.redirect('/contact?error=emptySubject');
     }
 
     if(!emailContent || emailContent.trim() === ''){
-        return res.status(400).json({error: 'Content cannot be empty'})
+        return res.redirect('/contact?error=emptyContent')
     }
 
-    res.status(200).json({
-        message: 'Form sended correctly',
-        data: {
-            email: email,
-            subject: subject,
-            content: emailContent
-        }
-    })
+    res.redirect('/contact?success=true')
 
     console.log(email, subject, emailContent)
 })
@@ -62,14 +53,20 @@ app.post('/contact', (req, res)=>{
 app.post('/opinion', (req, res)=>{
     const {opinionTextArea} = req.body;
 
+    let id = new Date().getTime()
+
     console.log(opinionTextArea)
 
     if(!opinionTextArea || opinionTextArea.trim() === ''){
         return res.redirect('/opinion?error=Opinion%20submit%20empty');
     };
 
-    opinions.push(opinionTextArea);
+    opinions.push({opinionTextArea, id});
     console.log(opinions)
 
-    return res.redirect('/opinion');
+    return res.redirect('/opinion?success=true');
 })
+
+app.listen(port, ()=>{
+    console.log(`Listening on port ${port}.`)
+});

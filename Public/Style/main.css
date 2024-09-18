@@ -3,7 +3,7 @@ body {
 }
 
 #opinion {
-    background-color: brown;
+    background-color: rgb(190, 86, 86);
     border-radius: 25px;
     list-style-type: none;
     margin-top: 30px;
@@ -14,12 +14,17 @@ body {
 }
 
 li {
-    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
     width: 80%;
     text-align: center;
+    align-items: center;
     background-color: rgb(250, 175, 121);
     border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0;
 }
+
 
 main {
     position: absolute;
@@ -57,7 +62,7 @@ footer {
     display: grid;
     background-color: wheat;
     position: absolute;
-    width: 80%;
+    width: 60%;
     padding: 30px 0;
     border-radius: 20px;
     text-align: center;
@@ -74,7 +79,7 @@ footer {
 
 #opinionTextArea {
     resize: vertical;
-    width: 100%;
+    width: 20%;
     min-height: 200px;
     font-family: Arial, Helvetica, sans-serif;
     width: 30rem;
@@ -95,4 +100,26 @@ form > div > input, form > div > textarea{
 #buttons {
     width: 30%;
     margin: 0 auto;
+}
+
+.errorAlert {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: auto;
+    margin: 10px;
+}
+
+.successAlert {
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: auto;
+    margin: 10px;
+}
+
+.btn {
+    
 }
